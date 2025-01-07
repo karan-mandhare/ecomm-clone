@@ -1,0 +1,108 @@
+<div class="container my-5">
+  <h2>Billing Details</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <form>
+        <!-- first name field -->
+        <div class="input-field">
+          <label for="firstname">First Name</label>
+          <input type="text" id="firstname" />
+        </div>
+
+        <!-- company name -->
+        <div class="input-field">
+          <label for="comName">Company Name</label>
+          <input type="text" id="comName" />
+        </div>
+
+        <!-- address -->
+        <div class="input-field">
+          <label for="address">Address</label>
+          <input type="text" id="address" />
+        </div>
+
+        <!-- Town or city -->
+        <div class="input-field">
+          <label for="city">Town/City</label>
+          <input type="text" id="city" />
+        </div>
+
+        <!-- phone number -->
+        <div class="input-field">
+          <label for="number">Phone Number</label>
+          <input type="text" id="number" />
+        </div>
+
+        <!-- email address -->
+        <div class="input-field">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" />
+        </div>
+
+        <!-- checkbox -->
+        <div class="input-field">
+          <label class="checkbox">
+            <input type="checkbox" />
+            Save this information for faster check-out next time
+          </label>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <div class="right-cont">
+        <div class="d-flex justify-content-between">
+          <img src="" alt="prod-img" />
+          <p>name</p>
+          <p>qty</p>
+          <p>price</p>
+        </div>
+
+        <div class="subtotal">
+          <h6>Subtotal:</h6>
+          <p>price</p>
+        </div>
+        <div class="subtotal">
+          <h6>Shipping:</h6>
+          <p>price</p>
+        </div>
+        <div class="subtotal border-0">
+          <h6>Total:</h6>
+          <p>price</p>
+        </div>
+        <div class="subtotal border-0">
+          <div>
+            <label for="bank">
+              <input type="radio" id="bank" name="payment" value="bank" />
+              Bank</label
+            >
+          </div>
+          <div class="paymenth-method">
+            <img
+              src="../../../assets/images/payment/payment-options.png"
+              alt="payment-option"
+            />
+          </div>
+        </div>
+
+        <div class="subtotal border-0">
+          <div>
+            <label for="cash">
+              <input type="radio" id="cash" name="payment" value="cash" />
+              Cash on delivery</label
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex coupon-btn my-3">
+        <input type="text" placeholder="Coupon Code" />
+        <div class="text-center product-button">
+          <button>Apply Code</button>
+        </div>
+      </div>
+      <div class="text-left product-button mt-4">
+        <button>Place Order</button>
+      </div>
+    </div>
+  </div>
+</div>

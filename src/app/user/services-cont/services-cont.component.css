@@ -1,0 +1,25 @@
+.service-cont {
+  margin-block: 10rem;
+}
+.outer-body {
+  background-color: var(--gray-color);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  text-align: center;
+}
+.inner-button {
+  background-color: var(--black-color);
+  border-radius: 50%;
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+small {
+  font-size: 14px;
+  font-weight: 500;
+}

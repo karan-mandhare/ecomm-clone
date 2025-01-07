@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.form-cont {
+  height: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.custom-cont {
+  margin-top: 4rem;
+  min-height: 70vh;
+}
+.left-cart-img {
+  max-width: 500px;
+  height: 100%;
+}
+
+form {
+  padding-block: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+form h4 {
+  font-size: 36px;
+  font-weight: 500;
+}
+form p {
+  font-weight: 400;
+  font-size: 1rem;
+}
+button {
+  background-color: var(--button-color);
+  color: var(--white-color);
+  border-radius: 5px;
+  margin-block: 1rem;
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  outline: unset;
+}
+button:hover {
+  background-color: var(--button-hover-color);
+}
+
+input {
+  width: 100%;
+  padding-block: 0.3rem;
+  border: none;
+  border-bottom: 2px solid#999;
+  outline: none;
+  color: #706f6f;
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+.input-field {
+  margin-block: 2rem;
+}
+.signup {
+  font-weight: 400;
+}
+.signup span {
+  color: var(--button-color);
+  cursor: pointer;
+}
+.signup span:hover {
+  color: var(--button-hover-color);
+}
+.error-field {
+  display: block;
+  color: var(--error-color);
+  font-weight: var(--error-font-weight);
+  font-size: 0.7rem;
+  font-weight: 400;
+}
+@media (max-width: 1200px) {
+  .form-cont {
+    padding-left: 3rem;
+    width: 100%;
+  }
+}
+@media (max-width: 1000px) {
+  .login_form {
+    width: 100%;
+  }
+  .img_cont img {
+    display: none;
+  }
+  .form-cont {
+    justify-content: center;
+  }
+}

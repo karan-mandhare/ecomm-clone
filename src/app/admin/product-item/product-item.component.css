@@ -1,0 +1,85 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  position: relative;
+}
+
+.prod-img {
+  width: 6.5rem;
+  height: 6.5rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-color: rgb(248, 248, 248);
+}
+h3,
+p,
+small {
+  font-size: 0.8rem;
+}
+.name {
+  font-size: 1rem;
+}
+.brand-name {
+  font-weight: 600;
+}
+h3 {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+p {
+  color: var(--gray-color);
+}
+.prod-img img {
+  width: 4.5rem;
+}
+small {
+  font-weight: 700;
+}
+.menu-btn button {
+  border: none;
+  padding: 0.1rem 0.6rem;
+}
+.summary {
+  font-weight: 600;
+  font-size: 1rem;
+}
+.upper-icon {
+  color: rgb(218, 218, 1);
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+.summ-cont {
+  flex-grow: 1;
+  margin-bottom: 5px;
+}
+
+.sales {
+  border: 1px solid var(--gray-color);
+  border-radius: 10px;
+  padding: 0.2rem 1rem;
+  flex-shrink: 0;
+}
+.menu-list li button {
+  background: none;
+  width: 100%;
+  margin-bottom: 0.2rem;
+  font-weight: 600;
+  text-align: start;
+}
+.menu-list li button:hover {
+  font-weight: 800;
+}
+.menu-list .view button {
+  color: blue;
+}
+.menu-list .edit button {
+  color: green;
+}
+.menu-list .delete button {
+  color: red;
+}

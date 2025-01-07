@@ -1,0 +1,70 @@
+.header-with-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.main_head {
+  font-size: 36px;
+  font-weight: 700;
+}
+.todays-cards {
+  display: flex;
+  overflow-x: auto;
+  max-width: 100%;
+}
+.todays-cards::-webkit-scrollbar {
+  display: none;
+}
+.todays-cards {
+  scrollbar-width: none;
+}
+.today-cont {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  cursor: pointer;
+}
+.square-box {
+  width: 18px;
+  height: 30px;
+  background-color: var(--button-color);
+  border-radius: 2px;
+}
+.cust-today {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--button-color);
+}
+.product-button button {
+  background-color: var(--button-color);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  color: var(--white-color);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 4rem;
+  border-radius: 5px;
+}
+
+.product-button button:hover {
+  background-color: var(--button-hover-color);
+}
+h2 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+.nav-icons {
+  font-size: 2rem;
+}
+.nav-icons i {
+  cursor: pointer;
+  margin-inline: 0.5rem;
+  background-color: #d2d2d2;
+  border-radius: 50%;
+  padding: 0.4rem;
+}
+@media (max-width: 770px) {
+  .nav-icons {
+    width: 100%;
+    text-align: right;
+  }
+}

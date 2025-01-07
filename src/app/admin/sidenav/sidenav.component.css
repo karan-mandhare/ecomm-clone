@@ -1,0 +1,72 @@
+.side_main {
+  width: 100%;
+  height: 100%;
+  border-right: 2px solid var(--gray-color);
+}
+.dashboard,
+.products,
+.order,
+.categories {
+  padding: 1.1rem 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 90%;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.side_main div:hover {
+  background-color: var(--button-color);
+  color: var(--white-color);
+}
+
+.seleccted {
+  background-color: var(--button-color);
+  color: var(--white-color);
+}
+
+@media (max-width: 1310px) {
+  .dashboard i,
+  .products i,
+  .order i,
+  .categories i {
+    display: none;
+  }
+  .dashboard,
+  .products,
+  .order,
+  .categories {
+    font-size: 0.7rem;
+    margin-left: 0.2rem;
+  }
+}
+@media (max-width: 850px) {
+  .dashboard,
+  .products,
+  .order,
+  .categories {
+    margin-left: 0.5rem;
+  }
+}
+@media (max-width: 800px) {
+  .dashboard,
+  .products,
+  .order,
+  .categories {
+    width: 95%;
+  }
+}
+@media (max-width: 767px) {
+  .side_main {
+    border: none;
+  }
+  .dashboard i,
+  .products i,
+  .order i,
+  .categories i {
+    display: inline;
+    font-size: 1rem;
+  }
+}

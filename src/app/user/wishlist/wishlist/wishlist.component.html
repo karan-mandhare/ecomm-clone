@@ -1,0 +1,14 @@
+<div class="container today-cont">
+  <div class="d-flex justify-content-between align-items-center my-3 head-cont">
+    <h2 class="fw-bold pe-5 main_head">Wishlist (4)</h2>
+    <div class="text-center product-button pb-4">
+      <button (click)="viewAllProd()">Move All To Bag</button>
+    </div>
+  </div>
+
+  <div class="todays-cards" #cardContainer>
+    <div *ngFor="let item of products">
+      <app-selling-products-items [item]="item"></app-selling-products-items>
+    </div>
+  </div>
+</div>

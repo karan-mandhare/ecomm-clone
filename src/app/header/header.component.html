@@ -1,0 +1,99 @@
+<div class="container-fluid mt-4 pb-1 header-cont">
+  <div class="row">
+    <div class="col-md-8 col-sm-6 exclusive-cont">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand exclusive" routerLink="user">Exclusive</a>
+
+          <div class="collapse navbar-collapse text-end" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item list-item">
+                <a class="nav-link active" aria-current="page" routerLink="user"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item list-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Contact</a
+                >
+              </li>
+              <li class="nav-item list-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >About</a
+                >
+              </li>
+              <li class="nav-item list-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Sign Up</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="col-md-4 search-cont col-sm-6">
+      <nav class="navbar">
+        <div class="container-fluid d-flex justify-content-between w-100">
+          <div class="search-input w-50">
+            <form class="d-flex" role="search">
+              <input
+                class="me-2"
+                type="search"
+                placeholder="What are you looking for?"
+                aria-label="Search"
+              />
+              <span class="search-button">
+                <i class="bi bi-search"></i>
+              </span>
+            </form>
+          </div>
+          <div class="head-icons w-50 justify-content-end icon-cont">
+            <div class="web-logo">Exclusive</div>
+
+            <button class="position-relative cart-button">
+              <i class="bi bi-heart" (click)="wishlistClick()"></i>
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              >
+                4
+              </span>
+            </button>
+            <button class="position-relative cart-button">
+              <i class="bi bi-cart" (click)="cartClick()"></i>
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              >
+                {{ cartLen }}
+              </span>
+            </button>
+            <button
+              class="cust-togg user"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-person"></i>
+              <ul
+                class="dropdown-menu menu-list"
+                style="background-color: white; padding: 1rem"
+              >
+                <li><a routerLink="/user/profile">Manage My Account</a></li>
+                <!-- <li>My Order</li>
+                <li>My Cancellations</li>
+                <li>My Reviews</li> -->
+                <li>
+                  <a
+                    ><button class="logout" (click)="logout()">
+                      Logout
+                    </button></a
+                  >
+                </li>
+              </ul>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>

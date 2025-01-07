@@ -1,0 +1,86 @@
+<div class="container my-5">
+  <div class="d-flex cust-buttons">
+    <button class="home-btn">Home /</button>
+    <button class="cart-button">Cart</button>
+  </div>
+
+  <div class="cart-table mb-3">
+    <table class="table table-borderless table-responsive">
+      <thead>
+        <tr class="table-head">
+          <th>#</th>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let item of cartItems; index as i">
+          <tr>
+            <td class="pt-4">{{ i + 1 }}</td>
+            <td>
+              <div class="product-row align-items-center">
+                <img [src]="item?.image" alt="product-img" />
+                <p>{{ item?.name }}</p>
+              </div>
+            </td>
+            <td class="pt-4">
+              {{ item?.price | number : "1.2-2" }}
+            </td>
+            <td class="d-flex">
+              <p class="pt-3">{{ item.quantity }}</p>
+              <div class="add-sub">
+                <i class="bi bi-plus first"></i>
+                <i class="bi bi-dash second"></i>
+              </div>
+            </td>
+            <td class="pt-4">
+              {{ item.quantity * item.price | number : "1.2-2" }}
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-between update-buttons">
+    <button>Return To Shop</button>
+    <button>Update Cart</button>
+  </div>
+
+  <div class="cart-checkout">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <div class="d-flex coupon-btn">
+          <input type="text" placeholder="Coupon Code" />
+          <div class="text-center product-button">
+            <button>Apply Coupon</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <div class="ms-auto right-cont">
+          <div>
+            <h5 class="pb-3">Cart Total</h5>
+            <div class="cart-total">
+              <p>Subtotal</p>
+              <p>₹1750</p>
+            </div>
+            <div class="cart-total">
+              <p>Shipping</p>
+              <p>Free</p>
+            </div>
+            <div class="cart-total border-0">
+              <p>Total:</p>
+              <p>₹1750</p>
+            </div>
+          </div>
+          <div class="text-center product-button">
+            <button (click)="billingDetails()">Procees to checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

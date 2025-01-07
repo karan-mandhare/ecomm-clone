@@ -1,0 +1,30 @@
+.main_cont {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  font-size: 110px;
+  font-weight: 600;
+  margin-block: 2rem;
+}
+p {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+button {
+  margin-block: 3rem;
+  background-color: var(--button-color);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  color: var(--white-color);
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+}
+button:hover {
+  background-color: var(--button-hover-color);
+}

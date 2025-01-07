@@ -1,0 +1,20 @@
+<div class="card product-card me-3">
+  <div class="img-per-cont">
+    <img [src]="item.image" class="card-img-top" alt="product_img" />
+    <span class="percentage">-{{ item.discount }}%</span>
+    <div class="like-icons">
+      <div class="heart"><i class="bi bi-heart"></i></div>
+      <div class="visible"><i class="bi bi-eye"></i></div>
+    </div>
+    <div class="add-to-cart">Add To Cart</div>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ item?.name }}</h5>
+    <div class="price-cont">
+      <span class="pe-3 price">₹ {{ item?.reducedPrice }}</span>
+      <del>₹ {{ item?.actualPrice }}</del>
+    </div>
+    <ngb-rating [rate]="item.rating"></ngb-rating
+    ><span class="ps-2 rate">{{ item.rating }}</span>
+  </div>
+</div>

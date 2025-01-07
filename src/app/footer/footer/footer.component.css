@@ -1,0 +1,130 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 40vh;
+}
+
+.main_foot {
+  width: 100%;
+  margin-top: auto;
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+
+footer {
+  width: 100%;
+
+  min-height: 30vh;
+  padding-top: 4rem;
+}
+.send-icon {
+  font-size: 1rem !important;
+}
+.exclusive h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
+h6 {
+  font-size: 20px;
+  font-weight: 500;
+}
+p,
+a {
+  font-size: 1rem;
+  font-weight: 400;
+}
+a {
+  text-decoration: none;
+  color: var(--white-color);
+}
+.email-button {
+  display: flex;
+  text-align: right;
+  width: 100%;
+
+  max-width: 180px;
+  padding: 0.6rem 0.4rem;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid var(--white-color);
+  color: white;
+}
+.email-button input {
+  width: 100%;
+  color: var(--white-color);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-weight: 600;
+}
+.my-email {
+  width: 150px;
+  position: relative;
+}
+.my-email p {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1rem;
+}
+.support-section h6 {
+  padding-bottom: 1rem;
+}
+.account h6,
+.quick-link h6,
+.download-section h6 {
+  padding-bottom: 0.5rem;
+}
+.account a,
+.quick-link a,
+.download-section a {
+  display: block;
+  padding-block: 0.5rem;
+}
+.download-section small {
+  font-size: 11px;
+}
+.social-icons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 150px;
+  padding-block: 1rem;
+}
+.download-images {
+  padding-top: 0.5rem;
+  display: flex;
+}
+.qr-code {
+  width: 4rem;
+  color: var(--white-color);
+  padding-right: 0.5rem;
+}
+.google-play,
+.app-store {
+  width: 6rem;
+  height: 1.6rem;
+}
+.copyright {
+  position: relative;
+  height: 5vh;
+  width: 100%;
+  text-align: center;
+}
+.copyright p {
+  position: absolute;
+  bottom: 10;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  font-weight: 200;
+  color: var(--gray-color);
+  width: 100%;
+  background-color: var(--black-color);
+}

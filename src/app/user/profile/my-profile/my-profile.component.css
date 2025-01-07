@@ -1,0 +1,118 @@
+.user-name {
+  text-align: right;
+  font-size: 14px;
+  font-weight: 400;
+  margin-block: 5rem;
+}
+.user-name span {
+  color: var(--button-color);
+}
+.profile-nav {
+  margin-left: 5rem;
+}
+h4 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 400;
+  display: block;
+  line-height: 2rem;
+}
+.links a:hover {
+  color: var(--button-color);
+}
+.links {
+  padding-left: 2.3rem;
+}
+.profile-data {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  padding: 3rem 5rem;
+  margin-bottom: 5rem;
+}
+label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  padding-bottom: 0.5rem;
+}
+input {
+  border: none;
+  background-color: var(--secondary-color);
+  outline: none;
+  padding: 0.5rem 1rem;
+}
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  max-width: 330px;
+}
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--button-color);
+}
+.input-field {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+input[type="password"] {
+  margin-bottom: 1rem;
+  width: 97%;
+}
+.cancel-btn {
+  border: none;
+  background: none;
+  margin-right: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.save-btn {
+  background-color: var(--button-color);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  color: var(--white-color);
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+}
+.save-btn:hover {
+  background-color: var(--button-hover-color);
+  background-color: var(--button-hover-color);
+}
+@media (max-width: 1400px) {
+  .profile-data {
+    padding: 2rem;
+  }
+  input[type="text"],
+  input[type="email"] {
+    width: 100%;
+    max-width: 250px;
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .input-field {
+    flex-direction: column;
+  }
+  .input-field div {
+    margin-bottom: 0.5rem;
+  }
+  input {
+    width: 100%;
+    max-width: 500px !important;
+  }
+  input[type="password"] {
+    width: 100%;
+  }
+  .profile-nav {
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+  }
+}

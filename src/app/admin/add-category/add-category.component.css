@@ -1,0 +1,39 @@
+label {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+input[type="text"] {
+  border: none;
+  outline: none;
+  width: 90%;
+  font-size: 1.3rem;
+  border-bottom: 2px solid var(--gray-color);
+}
+
+.add-cat {
+  background-color: var(--button-color);
+  border: none;
+  padding: 0.5rem 1.5rem;
+  color: var(--white-color);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  border-radius: 5px;
+}
+.add-cat:hover {
+  background-color: var(--button-hover-color);
+}
+.close-btn {
+  background-color: var(--gray-color);
+  border: none;
+  padding: 0.5rem 1.5rem;
+  color: var(--white-color);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  border-radius: 5px;
+}
+.close-btn:hover {
+  background-color: rgb(194, 193, 193);
+}

@@ -1,0 +1,27 @@
+<div class="container m-1">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="name">
+      <label for="name">Name</label>
+      <input type="text" class="name-field" id="name" formControlName="name" />
+    </div>
+
+    <div class="img">
+      <label for="img">Image</label>
+      <input
+        type="file"
+        class="img-field"
+        id="img"
+        (change)="onImageChange($event)"
+      />
+    </div>
+
+    <div class="text-end pe-3 pb-3">
+      <button type="button" class="close-btn me-3" data-bs-dismiss="modal">
+        Close
+      </button>
+      <button type="submit" class="add-cat" data-bs-dismiss="modal">
+        Add Category
+      </button>
+    </div>
+  </form>
+</div>

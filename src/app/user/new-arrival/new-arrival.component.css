@@ -1,0 +1,44 @@
+.header-with-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.todays-cards {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  justify-content: center;
+  gap: 1rem;
+}
+.todays-cards::-webkit-scrollbar {
+  display: none;
+}
+.todays-cards {
+  scrollbar-width: none;
+}
+.today-cont {
+  margin-block: 5rem;
+}
+.square-box {
+  width: 18px;
+  height: 30px;
+  background-color: var(--button-color);
+  border-radius: 2px;
+}
+.cust-today {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--button-color);
+}
+.grid-prop {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.first {
+  grid-row-start: span 2;
+  grid-column-start: span 2;
+}
+.second {
+  grid-column-start: span 2;
+}
