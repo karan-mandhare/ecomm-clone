@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonResponse } from 'src/app/model/CommonResponse';
 import { Product } from 'src/app/model/Product';
+import { WishlistService } from 'src/app/service/wishlist.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class WishlistComponent implements OnInit {
   cards!: Product[];
   userId!: number;
 
-  constructor() {
+  constructor(private wishListService: WishlistService) {
     let id = sessionStorage.getItem('id');
     this.userId = Number(id);
   }
@@ -24,7 +25,9 @@ export class WishlistComponent implements OnInit {
   }
 
   getListWishList() {
-
+    this.wishListService.wishList$.subscribe((list) => {
+      this.products = list;
+    })
   }
 
   getProductItems() {

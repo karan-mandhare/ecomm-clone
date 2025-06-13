@@ -30,6 +30,9 @@ export class WishlistService {
     let url = '/wishlist' + this.baseUrls.getBaseUrl('get-wishlist');
 
     this.httpService.httpGet(url, params, (result: CommonResponse<Product[]>) => {
+      if (result.success) {
+
+      }
       this.wishList = result.data;
       this.wishListSubject.next(this.wishList);
       if (callback) {
