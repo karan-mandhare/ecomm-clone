@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../cart-service/cart.service';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../auth/auth.service';
+
+import { Product } from '../model/Product';
+import { WishlistService } from '../service/wishlist.service';
 
 @Component({
   selector: 'app-header',
@@ -11,15 +14,28 @@ import { AuthService } from '../services/auth.service';
 export class HeaderComponent implements OnInit {
   cartLen!: number;
   userData!: any;
+  role: string | null = null;
+  userId!: Number;
+  wishList: Product[] = []
   constructor(
     private router: Router,
+    private cartService: CartService,
     private authService: AuthService,
-    private cartService: CartService
-  ) {}
+    private wishListService: WishlistService
+  ) { }
 
   ngOnInit(): void {
-    this.userData = this.authService.getUserData();
-    this.loadCart();
+    let id = sessionStorage.getItem('id')
+    this.userId = Number(id);
+
+    this.wishListService.wishList$.subscribe((list) => {
+      this.wishList = list;
+    })
+
+    this.authService.role$.subscribe(role => {
+      this.role = role;
+    })
+    this.role = sessionStorage.getItem('role') || '';
   }
 
   loadCart(): void {
@@ -36,7 +52,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authService.clearToken();
+    this.authService.clear();
     this.router.navigate(['login']);
   }
 }

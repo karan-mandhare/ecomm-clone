@@ -2,59 +2,34 @@
   <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <label for="name" class="form-label d-block">Product Name</label>
-      <input
-        type="text"
-        id="name"
-        formControlName="name"
-        placeholder="Enter product name"
-      />
+      <input type="text" id="name" formControlName="name" placeholder="Enter product name" />
     </div>
     <div class="mb-3">
       <label for="brand" class="form-label d-block">Brand</label>
-      <input
-        type="text"
-        id="brand"
-        formControlName="brand"
-        placeholder="Enter brand name"
-      />
+      <input type="text" id="brand" formControlName="brand" placeholder="Enter brand name" />
     </div>
 
     <div class="mb-3">
       <label for="desc" class="form-label d-block">Description</label>
-      <textarea
-        id="desc"
-        formControlName="desc"
-        rows="3"
-        placeholder="Enter product description"
-        class="w-100"
-      ></textarea>
+      <textarea id="desc" formControlName="desc" rows="3" placeholder="Enter product description"
+        class="w-100"></textarea>
     </div>
 
     <div class="mb-3">
-      <label for="actPrice" class="form-label">Price</label>
-      <input
-        type="text"
-        id="actPrice"
-        formControlName="actPrice"
-        placeholder="Enter actual price"
-      />
+      <label for="price" class="form-label">Price</label>
+      <input type="text" id="price" formControlName="price" placeholder="Enter price" />
     </div>
 
     <div class="mb-3">
       <label for="discount" class="form-label">Discount (%)</label>
-      <input
-        type="text"
-        id="discount"
-        formControlName="discount"
-        placeholder="Enter discount percentage"
-      />
+      <input type="text" id="discount" formControlName="discount" placeholder="Enter discount percentage" />
     </div>
 
     <div class="mb-3">
       <label for="category" class="form-label me-2">Category</label>
       <select id="category" formControlName="category" class="styled-select">
-        <option *ngFor="let option of categoryOptions" [ngValue]="option.name">
-          {{ option?.name }}
+        <option *ngFor="let option of categoryOptions" [ngValue]="option?.id">
+          {{ option?.name | titlecase }}
         </option>
       </select>
     </div>
@@ -73,11 +48,7 @@
 
       <div class="mb-3">
         <label for="available" class="form-label me-2">Available</label>
-        <select
-          id="available"
-          formControlName="available"
-          class="styled-select"
-        >
+        <select id="available" formControlName="available" class="styled-select">
           <option [value]="true">Yes</option>
           <option [value]="false">No</option>
         </select>

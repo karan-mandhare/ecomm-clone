@@ -12,12 +12,11 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: () =>
-      import('./admin/admin.module').then((m) => m.AdminModule),
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
   {
     path: 'user',
-    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
   },
   {
     path: 'register',
@@ -33,8 +32,19 @@ const routes: Routes = [
   },
 ];
 
+// const routes: Routes = [
+//   {
+//     path: "",
+//     component: HighchartsComponent
+//   },
+//   {
+//     path: "table",
+//     component: MatTableComponent
+//   }
+// ]
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

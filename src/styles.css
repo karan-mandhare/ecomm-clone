@@ -15,10 +15,21 @@
   --error-color: red;
   --error-font-weight: 300;
   --gray-color: #999;
+  --green-color: green;
 }
 
 body {
   font-family: "Montserrat", serif;
   font-style: normal;
   font-weight: 500;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

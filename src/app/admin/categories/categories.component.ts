@@ -1,7 +1,11 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { CategoryService } from '../services/category.service';
 import { ToastrService } from 'ngx-toastr';
-import { ProductService } from '../services/product.service';
+import { Category } from 'src/app/model/Category';
+import { CommonResponse } from 'src/app/model/CommonResponse';
+import { Product } from 'src/app/model/Product';
+import { CategoryService } from 'src/app/service/category.service';
+import { ProductService } from 'src/app/service/product.service';
+
 
 @Component({
   selector: 'app-categories',
@@ -9,63 +13,56 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./categories.component.css'],
 })
 export class CategoriesComponent implements OnInit {
-  category: any[] = [];
-  product: any[] = [];
-  selected: any;
-  deletedCatId: any;
+  category!: Category[];
+  product!: Product[];
+  selectedCatProduct!: Product[];
+  selected!: number;
+  deletedCat!: Category;
   constructor(
-    private categoryService: CategoryService,
     private toastr: ToastrService,
+    private categoryService: CategoryService,
     private productService: ProductService
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.getCategories();
   }
 
   getCategories() {
-    this.categoryService.getCategories().subscribe({
-      next: (val: any) => {
-        this.category = val.data.data;
-      },
-    });
+    this.categoryService.getCategories((result: CommonResponse<Category[]>) => {
+      if (result.success) {
+        this.category = result?.data;
+      }
+    })
   }
 
   updateCategories() {
     this.getCategories();
   }
 
-  selectedCategory(cat: any) {
-    this.selected = cat;
-
-    this.productService.getProductByCat(cat._id).subscribe({
-      next: (val: any) => {
-        this.product = val.data;
-        console.log('prod', val.data);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+  selectedCategory(cat: Category) {
+    this.productService.getProductsByCategory(cat?.id, (result: CommonResponse<Product[]>) => {
+      if (result?.success) {
+        this.selected = cat?.id;
+        this.selectedCatProduct = result?.data;
+      }
+    })
   }
 
   editCategory(id: any) {
     console.log('edit', id);
   }
 
-  setDeletedCat(id: any) {
-    this.deletedCatId = id;
+  setDeletedCat(cat: Category) {
+    this.deletedCat = cat;
   }
   deleteCategory() {
-    console.log('deleted');
-    this.categoryService.deleteCategory(this.deletedCatId).subscribe({
-      next: (val: any) => {
+    this.categoryService.deleteCategoryById(this.deletedCat?.id, (result: CommonResponse<Category>) => {
+      if (result?.success) {
+        this.toastr.success(result?.message)
         this.getCategories();
-        this.toastr.success(val.message);
-      },
-      error: (error) => {
-        console.log(error);
-        this.toastr.error(error.error.message);
-      },
-    });
+      } else {
+        this.toastr.error(result?.message)
+      }
+    })
   }
 }

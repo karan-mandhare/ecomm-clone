@@ -8,12 +8,17 @@ import { Router } from '@angular/router';
 })
 export class SidenavComponent implements OnInit {
   activeNav: string = 'dashboard';
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   navClick(url: string) {
-    this.activeNav = url;
-    this.router.navigate(['admin', url]);
+    if (url.length == 0) {
+      this.activeNav = 'dashboard';
+      this.router.navigate(['admin']);
+    } else {
+      this.activeNav = url;
+      this.router.navigate(['admin', url]);
+    }
   }
 }

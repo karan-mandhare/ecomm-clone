@@ -21,7 +21,7 @@ const adminRoutes: Routes = [
     data: { role: 'admin' },
     children: [
       {
-        path: 'dashboard',
+        path: '',
         component: DashboardComponent,
       },
       {
@@ -49,13 +49,15 @@ const adminRoutes: Routes = [
     ProductItemComponent,
     AddProductComponent,
     AddCategoryComponent,
-    CategoriesComponent,
+    CategoriesComponent
   ],
   imports: [
     CommonModule,
+    RouterModule,
     RouterModule.forChild(adminRoutes),
     ReactiveFormsModule,
+
   ],
-  exports: [RouterModule],
+  exports: [RouterModule, SidenavComponent],
 })
-export class AdminModule {}
+export class AdminModule { }

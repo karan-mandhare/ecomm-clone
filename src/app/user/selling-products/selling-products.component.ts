@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ProductService } from 'src/app/admin/services/product.service';
 
 @Component({
   selector: 'app-selling-products',
@@ -11,16 +10,16 @@ export class SellingProductsComponent implements OnInit {
   products: any[] = [];
   cards: any[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor() { }
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe({
-      next: (val: any) => {
-        this.cards = val?.data?.data.filter((i: any) => i.rating >= 4);
-        console.log('cards', this.cards);
-        this.getProductItems();
-      },
-    });
+    // this.productService.getProducts().subscribe({
+    //   next: (val: any) => {
+    //     this.cards = val?.data?.data.filter((i: any) => i.rating >= 4);
+    //     console.log('cards', this.cards);
+    //     this.getProductItems();
+    //   },
+    // });
   }
 
   getProductItems() {

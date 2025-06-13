@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { CategoryService } from '../services/category.service';
+import { CategoryService } from 'src/app/service/category.service';
 
 @Component({
   selector: 'app-add-category',
@@ -14,7 +14,7 @@ export class AddCategoryComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
-    private categoryService: CategoryService
+    private http: CategoryService
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -22,7 +22,7 @@ export class AddCategoryComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onImageChange(event: any) {
     const file = event.target.files[0];
@@ -41,18 +41,14 @@ export class AddCategoryComponent implements OnInit {
       formData.append('name', this.form?.get('name')?.value);
       formData.append('image', this.form?.get('image')?.value);
 
-      this.categoryService.createCategory(formData).subscribe({
-        next: (val: any) => {
-          this.toastr.success(val.message);
+      this.http.addCategory(formData, (result: any) => {
+        if (result.success) {
+          this.toastr.success(result.message)
           this.update.emit();
-          setTimeout(() => {
-            this.closeForm();
-          }, 1000);
-        },
-        error: (error) => {
-          this.toastr.error(error.error.message);
-        },
-      });
+        } else {
+          this.toastr.error(result.message)
+        }
+      })
     }
   }
 

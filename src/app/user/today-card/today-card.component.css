@@ -3,24 +3,29 @@
   height: 350px;
   border: none !important;
 }
+
 .price {
   color: var(--button-color);
   font-weight: 500;
 }
+
 .price-cont,
 .rate {
   font-size: 0.9rem;
   font-weight: 500;
 }
+
 img {
   width: 100%;
   height: 100%;
   padding: 1.5rem;
 }
+
 h5 {
   font-size: 1rem;
   font-weight: 500;
 }
+
 .img-per-cont {
   position: relative;
   width: 100%;
@@ -28,6 +33,7 @@ h5 {
   background-color: var(--secondary-color);
   border-radius: 5px;
 }
+
 .percentage {
   font-size: 12px;
   font-weight: 400;
@@ -39,21 +45,24 @@ h5 {
   color: var(--white-color);
   border-radius: 5px;
 }
+
 .like-icons {
   position: absolute;
   right: 10px;
   top: 5px;
 }
+
 .heart,
 .visible {
   display: block;
   font-size: 1.5rem;
-  background-color: var(--white-color);
+  /* background-color: var(--white-color); */
   border-radius: 50%;
   text-align: center;
   margin-block: 0.5rem;
   cursor: pointer;
 }
+
 .add-to-cart {
   background-color: var(--black-color);
   color: var(--white-color);
@@ -67,14 +76,25 @@ h5 {
   font-weight: 500;
   opacity: 0;
 }
+
 .product-card:hover .add-to-cart {
   opacity: 1;
 }
+
 .heart i,
 .visible i {
   padding: 1rem 0.4rem;
 }
+
 .cartitem {
   opacity: 1;
   background-color: var(--button-color);
+}
+
+.red-heart {
+  color: red;
+}
+
+.white-heart {
+  color: #dadada;
 }

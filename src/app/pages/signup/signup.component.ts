@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { SignupService } from 'src/app/services/signup/signup.service';
+import { SignupserviceService } from 'src/app/service/signupservice.service';
 
 function passwordValidators(controls: AbstractControl) {
   const hasUppercase = /[A-Z]/.test(controls.value);
@@ -26,37 +26,39 @@ export class SignupComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private toastr: ToastrService,
-    private signup: SignupService
-  ) {}
+    private httpService: SignupserviceService
+  ) { }
 
   form = this.fb.group({
     username: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
+    mobile: ['', Validators.required],
     password: [
       '',
       [Validators.required, Validators.minLength(8), passwordValidators],
     ],
   });
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   submit() {
-    const username = this.form.controls.username.value;
-    const email = this.form.controls.email.value;
-    const password = this.form.controls.password.value;
-    if (!username || !email || !password) {
-      this.toastr.error('All fields required');
-      return;
+    if (this.form.valid) {
+      let data = this.form.value;
+      let newData = {
+        ...data,
+        roles: [{ name: "USER" }]
+      };
+      this.httpService.createUser(newData, (result: any) => {
+        if (result.success) {
+          this.toastr.success(result.message)
+          this.router.navigate(['login'])
+        } else {
+          this.toastr.error(result.message)
+        }
+      })
+    } else {
+      this.toastr.error('Enter field data properly.');
     }
-    this.signup.signUp(username, email, password).subscribe({
-      next: (val: any) => {
-        console.log(val);
-        this.toastr.success(val.message);
-      },
-      error: (err) => {
-        this.toastr.error(err.message);
-      },
-    });
   }
 
   loginClk() {

@@ -16,43 +16,60 @@
   border-radius: 5px;
   background-color: rgb(248, 248, 248);
 }
+
 h3,
 p,
 small {
   font-size: 0.8rem;
 }
+
 .name {
   font-size: 1rem;
 }
+
 .brand-name {
   font-weight: 600;
 }
+
 h3 {
   font-weight: 600;
   margin-bottom: 0.2rem;
 }
+
 p {
   color: var(--gray-color);
 }
+
 .prod-img img {
   width: 4.5rem;
 }
+
 small {
   font-weight: 700;
 }
+
 .menu-btn button {
   border: none;
   padding: 0.1rem 0.6rem;
 }
+
 .summary {
-  font-weight: 600;
+  font-weight: 00;
   font-size: 1rem;
 }
+
 .upper-icon {
-  color: rgb(218, 218, 1);
+  color: rgb(70, 218, 1);
   font-weight: 800;
   font-size: 1.5rem;
 }
+
+.down-icon {
+  color: rgb(218, 37, 1);
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
 .summ-cont {
   flex-grow: 1;
   margin-bottom: 5px;
@@ -64,6 +81,7 @@ small {
   padding: 0.2rem 1rem;
   flex-shrink: 0;
 }
+
 .menu-list li button {
   background: none;
   width: 100%;
@@ -71,15 +89,63 @@ small {
   font-weight: 600;
   text-align: start;
 }
+
 .menu-list li button:hover {
   font-weight: 800;
 }
+
 .menu-list .view button {
   color: blue;
 }
+
 .menu-list .edit button {
   color: green;
 }
+
 .menu-list .delete button {
   color: red;
+}
+
+.display-price {
+  position: absolute;
+  display: flex;
+  gap: .4rem;
+  /* align-items: end; */
+  /* justify-content: space-between; */
+  min-width: 11rem;
+}
+
+.curr-price {
+  /* flex: 1; */
+  font-size: 1rem;
+}
+
+.act-price {
+  position: relative;
+  /* text-decoration: line-through; */
+  font-size: .8rem;
+  /* margin-right: .4rem; */
+  display: inline-block;
+  color: gray;
+  font-weight: 400;
+}
+
+.act-price::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  /* center vertically */
+  left: 0;
+  width: 100%;
+  height: 1px;
+  /* thickness of the line */
+  background-color: gray;
+  /* or use #000 for black */
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.discount-per {
+  font-size: .8rem;
+  color: rgb(31, 168, 31);
 }

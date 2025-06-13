@@ -1,5 +1,9 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { ProductService } from 'src/app/admin/services/product.service';
+import { CommonResponse } from 'src/app/model/CommonResponse';
+import { Product } from 'src/app/model/Product';
+import { ProductService } from 'src/app/service/product.service';
+import { WishlistService } from 'src/app/service/wishlist.service';
+
 
 @Component({
   selector: 'app-todays',
@@ -9,7 +13,13 @@ import { ProductService } from 'src/app/admin/services/product.service';
 export class TodaysComponent implements OnInit {
   @Input() title!: string;
   @Input() head!: string;
-  cards: any[] = [];
+  products: Product[] = []
+  userId!: number;
+
+  constructor(private productService: ProductService, private wishListService: WishlistService) {
+    let id = sessionStorage.getItem('id');
+    this.userId = Number(id)
+  }
 
   @ViewChild('cardContainer', { static: false }) cardContainer!: ElementRef;
 
@@ -27,18 +37,18 @@ export class TodaysComponent implements OnInit {
     });
   }
 
-  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.getProducts();
   }
 
+  wishListUpdated() {
+    this.productService.getProducts();
+  }
+
   getProducts() {
-    this.productService.getProducts().subscribe({
-      next: (val: any) => {
-        this.cards = val?.data?.data;
-        console.log(val.data.data);
-      },
-    });
+    this.productService.products$.subscribe((product) => {
+      this.products = product;
+    })
   }
 }

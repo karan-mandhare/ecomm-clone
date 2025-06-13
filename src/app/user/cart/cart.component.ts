@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductService } from 'src/app/admin/services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/cart-service/cart.service';
-import { AuthService } from 'src/app/services/auth.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -19,12 +17,9 @@ export class CartComponent implements OnInit {
   constructor(
     private router: Router,
     private cartService: CartService,
-    private authService: AuthService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    const userData = this.authService.getUserData();
-    this.userId = userData.id;
     this.cartSubscription = this.cartService.cart$.subscribe((items) => {
       this.cartItems = items;
     });

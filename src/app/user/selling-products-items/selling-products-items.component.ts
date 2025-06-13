@@ -15,6 +15,6 @@ export class SellingProductsItemsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.item);
+    console.log('items from selling', this.item);
   }
 }

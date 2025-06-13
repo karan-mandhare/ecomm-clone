@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { CategoryService } from 'src/app/admin/services/category.service';
-import { ProductService } from 'src/app/admin/services/product.service';
+import { Category } from 'src/app/model/Category';
+import { CommonResponse } from 'src/app/model/CommonResponse';
+import { Product } from 'src/app/model/Product';
+import { CategoryService } from 'src/app/service/category.service';
 
 @Component({
   selector: 'app-category',
@@ -8,27 +10,23 @@ import { ProductService } from 'src/app/admin/services/product.service';
   styleUrls: ['./category.component.css'],
 })
 export class CategoryComponent implements OnInit {
-  categories: any[] = [];
-  prodByCat: any[] = [];
+  categories: Category[] = [];
+  prodByCat: Product[] = [];
 
   flag: boolean = true;
 
   collapsed: boolean[] = [];
   constructor(
-    private categoryService: CategoryService,
-    private productService: ProductService
-  ) {}
+    private categoryService: CategoryService
+    // private productService: ProductService
+  ) { }
 
   ngOnInit(): void {
-    this.categoryService.getCategories().subscribe({
-      next: (val: any) => {
-        console.log('cat', val.data.data);
-        this.categories = val?.data?.data;
-        this.collapsed = this.categories.map(() => false);
-
-        this.flag = this.categories.some((val) => val === true);
-      },
-    });
+    this.categoryService.getCategories((result: CommonResponse<Category[]>) => {
+      if (result?.success) {
+        this.categories = result?.data;
+      }
+    })
   }
 
   @ViewChild('categoryContainer', { static: false })
@@ -52,12 +50,12 @@ export class CategoryComponent implements OnInit {
     this.collapsed = this.collapsed.map(
       (_, idx) => idx === index && !this.collapsed[idx]
     );
-    this.flag = this.categories.some((val) => val === true);
-    this.productService.getProductByCat(cat._id).subscribe({
-      next: (val: any) => {
-        this.prodByCat = val.data;
-      },
-    });
+    // this.flag = this.categories.some((val) => val === true);
+    // this.productService.getProductByCat(cat._id).subscribe({
+    //   next: (val: any) => {
+    //     this.prodByCat = val.data;
+    //   },
+    // });
     console.log('collapsed', this.collapsed);
   }
 }

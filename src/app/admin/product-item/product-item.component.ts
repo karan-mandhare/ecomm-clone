@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Product } from 'src/app/model/Product';
 
 @Component({
   selector: 'app-product-item',
@@ -6,13 +7,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./product-item.component.css'],
 })
 export class ProductItemComponent implements OnInit {
-  @Input() product!: any;
+  @Input() product!: Product;
   @Output() delete = new EventEmitter();
   @Output() edit = new EventEmitter();
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  onViewClick() {}
+  onViewClick() { }
 
   onEditClick() {
     this.edit.emit(this.product);

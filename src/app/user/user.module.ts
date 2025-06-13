@@ -19,6 +19,7 @@ import { CartComponent } from './cart/cart.component';
 import { BillingPageComponent } from './billing-page/billing-page.component';
 import { MyProfileComponent } from './profile/my-profile/my-profile.component';
 import { ProductPageComponent } from './product-page/product-page.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 const userRoute: Routes = [
   {
@@ -26,32 +27,39 @@ const userRoute: Routes = [
     component: UserComponent,
     canActivate: [AuthGuard],
     data: { role: 'user' },
+    children: [
+      {
+        path: '',
+        component: UserDashboardComponent
+      },
+      {
+        path: 'wishlist',
+        component: WishlistComponent,
+      },
+      {
+        path: 'cart',
+        component: CartComponent,
+      },
+      {
+        path: 'billing-details',
+        component: BillingPageComponent,
+      },
+      {
+        path: 'profile',
+        component: MyProfileComponent,
+      },
+      {
+        path: 'product',
+        component: ProductPageComponent,
+      },
+    ]
   },
-  {
-    path: 'wishlist',
-    component: WishlistComponent,
-  },
-  {
-    path: 'cart',
-    component: CartComponent,
-  },
-  {
-    path: 'billing-details',
-    component: BillingPageComponent,
-  },
-  {
-    path: 'profile',
-    component: MyProfileComponent,
-  },
-  {
-    path: 'product',
-    component: ProductPageComponent,
-  },
+
 ];
 
 @NgModule({
   declarations: [
-    SidenavComponent,
+    ServicesContComponent,
     RightCarouselComponent,
     UserComponent,
     TodaysComponent,
@@ -62,11 +70,11 @@ const userRoute: Routes = [
     NewArrivalComponent,
     ServicesContComponent,
     WishlistComponent,
-    CartComponent,
     BillingPageComponent,
     ProductPageComponent,
+    UserDashboardComponent,
   ],
-  imports: [CommonModule, NgbModule, RouterModule.forChild(userRoute)],
+  imports: [CommonModule, NgbModule, RouterModule, RouterModule.forChild(userRoute)],
   exports: [RouterModule],
 })
-export class UserModule {}
+export class UserModule { }

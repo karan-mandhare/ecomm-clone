@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../services/product.service';
 import { ToastrService } from 'ngx-toastr';
+import { CommonResponse } from 'src/app/model/CommonResponse';
+import { Product } from 'src/app/model/Product';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-all-products',
@@ -8,52 +10,46 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./all-products.component.css'],
 })
 export class AllProductsComponent implements OnInit {
-  products!: any;
+  products!: Product[];
 
-  deleteProd: any = null;
-  editProd: any = null;
+  deleteProd!: Product;
+  editProd!: Product;
 
   constructor(
     private productService: ProductService,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getAllProducts();
   }
 
   getAllProducts() {
-    this.productService.getProducts().subscribe({
-      next: (val: any) => {
-        this.products = val?.data?.data;
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+
+    this.productService.getProducts((result: CommonResponse<any>) => {
+      if (result?.success) {
+        this.products = result?.data;
+      }
+    })
   }
 
-  openDeleteModal(product: any) {
+  openDeleteModal(product: Product) {
     this.deleteProd = product;
   }
 
-  openEditModal(product: any) {
+  openEditModal(product: Product) {
     this.editProd = product;
 
     console.log(this.editProd);
   }
 
   deleteProduct() {
-    this.productService.deleteProduct(this.deleteProd._id).subscribe({
-      next: (val: any) => {
-        this.toastr.success(val.message);
-        this.getAllProducts();
-      },
-      error: (error) => {
-        console.log(error);
-        this.toastr.error(error.error.message);
-      },
-    });
+    this.productService.deleteProductById(this.deleteProd?.id, (result: CommonResponse<Product>) => {
+      if (result?.success) {
+        this.toastr.success(result?.message);
+        this.getAllProducts()
+      }
+    })
   }
 
   updateProducts() {

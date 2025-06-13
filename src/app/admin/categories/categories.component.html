@@ -1,11 +1,7 @@
 <div class="container p-0 m-0 mx-auto my-4">
   <div class="container-md d-flex justify-content-between my-4">
     <h2 class="all-cat">All Categories</h2>
-    <button
-      class="new-cat-btn"
-      data-bs-toggle="modal"
-      data-bs-target="#exampleModal"
-    >
+    <button class="new-cat-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
       <i class="bi bi-plus-circle pe-1"></i>
       ADD NEW CATEGORY
     </button>
@@ -14,57 +10,36 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <div
-          *ngFor="let cat of category; index as i"
-          (click)="selectedCategory(cat)"
-        >
-          <div
-            class="category d-flex position-relative"
-            [ngClass]="{ select: selected === cat }"
-          >
-            <button
-              class="three-dot"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              type="button"
-            >
+        <div *ngFor="let cat of category; index as i" (click)="selectedCategory(cat)">
+          <div class="category d-flex position-relative" [ngClass]="{ select: selected === cat?.id }">
+            <button class="three-dot" data-bs-toggle="dropdown" aria-expanded="false" type="button">
               <i class="bi bi-three-dots"></i>
             </button>
 
             <ul class="dropdown-menu dropdown-menu-end menu-list">
               <li class="edit">
-                <button
-                  type="button"
-                  (click)="editCategory(cat._id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#editModal"
-                >
+                <button type="button" (click)="editCategory(cat?.id)" data-bs-toggle="modal"
+                  data-bs-target="#editModal">
                   Edit Category
                 </button>
               </li>
               <li class="delete">
-                <button
-                  type="button"
-                  data-bs-toggle="modal"
-                  data-bs-target="#deleteModal"
-                  (click)="setDeletedCat(cat._id)"
-                >
+                <button type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="setDeletedCat(cat)">
                   Delete Category
                 </button>
               </li>
             </ul>
 
-            <img [src]="cat.img" alt="" />
+            <img [src]="'data:jpeg' + ';base64,' + cat?.image" />
             <h5 class="my-auto">{{ cat?.name | titlecase }}</h5>
           </div>
         </div>
       </div>
       <div class="col-md-9">
         <div class="p-2 gap-3 d-flex flex-wrap">
-          <div
-            *ngFor="let prod of product; index as i"
-            class="bg-white p-2 product-cont"
-          >
+          <div *ngIf="selectedCatProduct?.length == 0" class="not-found">Product not found.</div>
+
+          <div *ngFor="let prod of selectedCatProduct; index as i" class="bg-white p-2 product-cont">
             <app-product-item [product]="prod">
               <!-- (delete)="openDeleteModal($event)"
         (edit)="openEditModal($event)" -->
@@ -76,13 +51,7 @@
   </div>
 </div>
 
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <app-add-category (update)="updateCategories()"></app-add-category>
@@ -90,34 +59,19 @@
   </div>
 </div>
 
-<div
-  class="modal fade"
-  id="deleteModal"
-  tabindex="-1"
-  aria-labelledby="deleteModalLabel"
->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">Are you sure you want to delete the product</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Cancel
         </button>
-        <button
-          type="button"
-          class="btn btn-danger"
-          data-bs-dismiss="modal"
-          (click)="deleteCategory()"
-        >
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteCategory()">
           Delete
         </button>
       </div>

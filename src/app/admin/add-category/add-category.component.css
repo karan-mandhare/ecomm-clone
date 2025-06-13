@@ -1,6 +1,6 @@
 label {
   display: block;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   font-size: 1.5rem;
 }
 input[type="text"] {
@@ -36,4 +36,11 @@ input[type="text"] {
 }
 .close-btn:hover {
   background-color: rgb(194, 193, 193);
+}
+.img-cont{
+  display: flex;
+  margin-top: 1rem;
+}
+.img-cont label{
+  margin-right: 1rem;
 }

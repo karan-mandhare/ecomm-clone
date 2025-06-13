@@ -1,36 +1,20 @@
 <div class="side_main py-5">
-  <div
-    class="dashboard"
-    [ngClass]="{ seleccted: activeNav === 'dashboard' }"
-    (click)="navClick('dashboard')"
-  >
+  <div class="dashboard" [ngClass]="{ seleccted: activeNav === 'dashboard' }" (click)="navClick('')">
     <i class="bi bi-house-add-fill pe-3"></i>
     <span>DASHBOARD</span>
   </div>
 
-  <div
-    class="products"
-    [ngClass]="{ seleccted: activeNav === 'products' }"
-    (click)="navClick('products')"
-  >
+  <div class="products" [ngClass]="{ seleccted: activeNav === 'products' }" (click)="navClick('products')">
     <i class="bi bi-list-nested pe-3"></i>
     <span>ALL PRODUCTS</span>
   </div>
 
-  <div
-    class="order"
-    [ngClass]="{ seleccted: activeNav === 'order' }"
-    (click)="navClick('order')"
-  >
+  <div class="order" [ngClass]="{ seleccted: activeNav === 'order' }" (click)="navClick('order')">
     <i class="bi bi-arrow-left-right pe-3"></i>
     <span>ORDER LIST</span>
   </div>
 
-  <div
-    class="categories"
-    [ngClass]="{ seleccted: activeNav === 'categories' }"
-    (click)="navClick('categories')"
-  >
+  <div class="categories" [ngClass]="{ seleccted: activeNav === 'categories' }" (click)="navClick('categories')">
     <i class="bi bi-card-checklist pe-3"></i>
     <span>CATEGORIES</span>
   </div>

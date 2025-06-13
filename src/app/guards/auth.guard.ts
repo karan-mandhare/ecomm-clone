@@ -6,13 +6,12 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService) {}
+  constructor() { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -21,12 +20,12 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const userRole = this.authService.getRole();
     const requiredRole = route.data['role'];
-    if (userRole === requiredRole) {
-      return true;
-    } else {
-      return false;
-    }
+    // if (userRole === requiredRole) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
+    return true;
   }
 }

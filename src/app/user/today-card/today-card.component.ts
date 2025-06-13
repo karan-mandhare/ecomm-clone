@@ -1,8 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/cart-service/cart.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { CommonResponse } from 'src/app/model/CommonResponse';
+import { Product } from 'src/app/model/Product';
+import { WishlistService } from 'src/app/service/wishlist.service';
 
 @Component({
   selector: 'app-today-card',
@@ -10,21 +12,26 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./today-card.component.css'],
 })
 export class TodayCardComponent implements OnInit {
+
   @Input() item!: any;
   userId!: string;
+
+  @Output() addedToWishlist = new EventEmitter<void>();
 
   constructor(
     config: NgbRatingConfig,
     private toastr: ToastrService,
     private cartService: CartService,
-    private authService: AuthService
+    private wishListService: WishlistService
   ) {
     config.max = 5;
     config.readonly = true;
-    this.userId = this.authService.getUserData().id;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('item', this.item);
+
+  }
 
   addToCart() {
     const prod = [
@@ -45,5 +52,14 @@ export class TodayCardComponent implements OnInit {
         this.toastr.error('Failed to add product to cart.');
       },
     });
+  }
+
+  addToWishList(item: any) {
+    this.wishListService.addToWishlist(item.id, (result: CommonResponse<Product>) => {
+      if (result.success) {
+        this.toastr.success(result.message)
+        this.addedToWishlist.emit()
+      }
+    })
   }
 }

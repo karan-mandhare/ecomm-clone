@@ -7,6 +7,7 @@
   max-width: 220px;
   padding: 5px 15px;
 }
+
 .search-input input {
   background-color: var(--secondary-color);
   border: none;
@@ -14,10 +15,12 @@
   font-size: 12px;
   font-weight: 400;
 }
+
 .search-input input:focus {
   outline: unset;
   border: unset;
 }
+
 .search-input span {
   border: none;
   cursor: pointer;
@@ -28,6 +31,7 @@
   font-weight: 500;
   font-size: 24px;
 }
+
 .cust-togg {
   outline: unset !important;
   border: unset !important;
@@ -42,19 +46,23 @@ a {
   font-size: 1rem;
   font-weight: 400;
 }
+
 li a:hover {
   font-weight: 600;
 }
+
 .head-icons {
   display: flex;
   align-items: center;
   gap: 1.3rem;
   padding-left: 3rem;
 }
+
 .head-icons i {
   font-size: 1.5rem;
   cursor: pointer;
 }
+
 .cust-togg i {
   background-color: var(--button-color);
   padding: 0.5rem;
@@ -64,51 +72,80 @@ li a:hover {
   color: var(--white-color);
   cursor: pointer;
 }
+
+.cust-togg-u i {
+  background-color: var(--button-color);
+  padding: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-radius: 50%;
+  color: var(--white-color);
+  cursor: pointer;
+  border: 1px solid var(--green-color);
+}
+
 .exclusive-cont {
   display: inline;
 }
+
 .web-logo {
   display: none;
   position: absolute;
   left: 5px;
 }
+
 .icon-cont {
   position: relative;
 }
+
 .cust-togg {
   background: none;
   border: none;
 }
+
 .cart-button {
   background: none;
   border: none;
 }
+
 .menu-list li a {
   text-decoration: none;
   color: var(--black-color);
 }
+
 .logout {
   border: none;
   background: none;
 }
+
 .logout:hover {
   font-weight: 600;
 }
+
+.admin-text {
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
 @media (max-width: 1400px) {
   .search-input {
     display: none;
   }
+
   .list-item {
     margin-right: 2rem !important;
   }
+
   .head-icons {
     width: 100% !important;
   }
 }
+
 @media (max-width: 575px) {
   .exclusive-cont {
     display: none;
   }
+
   .web-logo {
     display: inline;
   }

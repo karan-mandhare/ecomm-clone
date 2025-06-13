@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from 'src/app/services/auth.service';
-import { LoginService } from 'src/app/services/login/login.service';
+import { AuthService } from 'src/app/auth/auth.service';
+import { CommonResponse } from 'src/app/model/CommonResponse';
+import { LoginserviceService } from 'src/app/service/loginservice.service';
+import { WishlistService } from 'src/app/service/wishlist.service';
+
 
 function passwordValidators(controls: AbstractControl) {
   const hasUppercase = /[A-Z]/.test(controls.value);
@@ -26,10 +29,11 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private loginService: LoginService,
     private toastr: ToastrService,
-    private authService: AuthService
-  ) {}
+    private loginService: LoginserviceService,
+    private authService: AuthService,
+    private wishListService: WishlistService
+  ) { }
 
   form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -39,36 +43,32 @@ export class LoginComponent implements OnInit {
     ],
   });
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   submit() {
-    const email = this.form?.controls?.email?.value;
-    const password = this.form?.controls?.password?.value;
-    if (!email || !password) {
-      this.toastr.error('Enter email and password');
-      return;
-    }
-
-    this.loginService.loginUser(email, password).subscribe({
-      next: (val: any) => {
-        console.log('val', val);
-        this.authService.saveToken(val?.token?.token);
-        this.toastr.success(val.message);
-        const role = this.authService.getRole();
-        if (role === 'admin') {
-          this.router.navigate(['admin/dashboard']);
-        } else if (role === 'user') {
-          this.router.navigate(['user']);
+    if (this.form.valid) {
+      this.loginService.loginUser(this.form.value, (result: CommonResponse<any>) => {
+        if (result.success) {
+          this.authService.clear();
+          let role = result?.data?.roles;
+          this.authService.setRole(role?.[0]);
+          this.toastr.success(result.message)
+          sessionStorage.setItem('token', result?.data?.token);  // Store token
+          let id = this.authService.decodeToken(result?.data?.token)
+          // this.wishListService.getWishList(id);
+          if (result?.data?.roles?.length > 1 || result?.data?.roles?.[0] == "ADMIN") {
+            this.router.navigate(['admin']);
+          } else {
+            this.router.navigate(['user'])
+          }
         } else {
-          this.router.navigate(['register']);
+          this.toastr.error(result?.message)
         }
-      },
-      error: (error) => {
-        console.log('error', error);
-        this.toastr.error(error?.error?.message || 'An error occurred');
-        this.router.navigate(['register']);
-      },
-    });
+
+      })
+    } else {
+      this.toastr.error('Enter valid data');
+    }
   }
 
   signupClk() {

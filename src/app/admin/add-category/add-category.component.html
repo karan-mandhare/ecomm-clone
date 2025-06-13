@@ -1,18 +1,13 @@
 <div class="container m-1">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="name">
+    <div class="name mt-3">
       <label for="name">Name</label>
-      <input type="text" class="name-field" id="name" formControlName="name" />
+      <input type="text" class="name-field mt-2" id="name" formControlName="name" />
     </div>
 
-    <div class="img">
+    <div class="img img-cont">
       <label for="img">Image</label>
-      <input
-        type="file"
-        class="img-field"
-        id="img"
-        (change)="onImageChange($event)"
-      />
+      <input type="file" class="img-field" id="img" (change)="onImageChange($event)" />
     </div>
 
     <div class="text-end pe-3 pb-3">

@@ -1,16 +1,14 @@
 <div class="card product-card me-3">
   <div class="img-per-cont">
-    <img [src]="item.image" class="card-img-top" alt="product_img" />
+    <img [src]="'data:image/jpeg;base64,' +item?.image" class="card-img-top" alt="product_img" />
     <span class="percentage">-{{ item.discount }}%</span>
     <div class="like-icons">
-      <div class="heart"><i class="bi bi-heart"></i></div>
+      <div class="heart" (click)="addToWishList(item)"> <i
+          [ngClass]="item.wishlistFlag ? 'bi bi-heart-fill red-heart' : 'bi bi-heart-fill white-heart'">
+        </i></div>
       <div class="visible"><i class="bi bi-eye"></i></div>
     </div>
-    <div
-      class="add-to-cart"
-      (click)="addToCart()"
-      [ngClass]="{ cartitem: item.cart }"
-    >
+    <div class="add-to-cart" (click)="addToCart()" [ngClass]="{ cartitem: item.cart }">
       {{ item.cart ? "Remove from Cart" : "Add To Cart" }}
     </div>
   </div>
@@ -20,7 +18,6 @@
       <span class="pe-3 price">₹ {{ item?.redPrice | number : "1.2-2" }}</span>
       <del>₹ {{ item?.actPrice }}</del>
     </div>
-    <ngb-rating [rate]="item.rating"></ngb-rating
-    ><span class="ps-2 rate">{{ item.rating }}</span>
+    <ngb-rating [rate]="item.rating"></ngb-rating><span class="ps-2 rate">{{ item.rating }}</span>
   </div>
 </div>
